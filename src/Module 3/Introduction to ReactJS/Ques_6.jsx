@@ -5,6 +5,7 @@
 // Step 2: Modify the App.js to use LoginMessage with a boolean prop
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function LoginMessage(props) {
   return (
