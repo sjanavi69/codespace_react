@@ -1,15 +1,16 @@
-
-import './Module 3/Introduction to ReactJS/Ques_1';
-import Ques_1 from './Module 3/Introduction to ReactJS/Ques_1';
+import React from 'react';
+import './Module 3/Introduction to ReactJS/Ques_3';
+import Greeting from './Module 3/Introduction to ReactJS/Ques_3';
 
 function App() {
 
   return (
     <div>
-     <h1>Welcome!</h1>
-      <Ques_1 />
+   
+      <Greeting />
     </div>
   );
+  
 }
 
 export default App;
