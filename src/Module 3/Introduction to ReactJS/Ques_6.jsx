@@ -18,4 +18,9 @@ function LoginMessage(props) {
   );
 }
 
+LoginMessage.propTypes = {
+ isLoggedIn : PropTypes.bool.isRequired,
+};
+
+
 export default LoginMessage;
