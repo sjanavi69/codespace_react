@@ -14,7 +14,6 @@ function Dependent_API_Call() {
   const [loadingUsers, setLoadingUsers] = useState(true);
   const [loadingPosts, setLoadingPosts] = useState(false);
   const [error, setError] = useState('');
-
   // Fetch users when component mounts
   useEffect(() => {
     const fetchUsers = async () => {
