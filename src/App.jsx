@@ -1,18 +1,22 @@
+// App.jsx
 import React from 'react';
-import './Module 3/React Hooks - useState & useEffect/Ques_4_Simple_Form';
-import Simple_Form from './Module 3/React Hooks - useState & useEffect/Ques_4_Simple_Form';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import Home from './Module 4/React Router - Navigation in React/Home';
+import About from './Module 4/React Router - Navigation in React/About';
+import Contact from './Module 4/React Router - Navigation in React/Contact';
 
-
-
-function App() {
- 
-
+const App = () => {
   return (
-    <div>
-      
-      < Simple_Form />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<Home />} />
+        <Route path="/about/subpage" element={<SubPage />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
