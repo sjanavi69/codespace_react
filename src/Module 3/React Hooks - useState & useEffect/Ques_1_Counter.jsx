@@ -6,4 +6,24 @@
 //     - Display the current count value.
 //     - Write your code within the file, by the name of component as Counter
 
+import React, { useState } from 'react';
+
+function Counter() {
+  // Initialize count state to 0
+  const [count, setCount] = useState(0);
+
+  // Handler to increment count
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={handleIncrement}>Increment</button>
+    </div>
+  );
+}
+
+export default Counter;
 
