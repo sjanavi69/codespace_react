@@ -6,3 +6,32 @@
 //     - Use useState to store the current window width.
 //     - Update the width state whenever the window is resized and display it.
 //     - Write your code within the file, by the name of component as Window_Width
+import React, { useState, useEffect } from 'react';
+
+function Window_Width() {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    // Handler to update width state
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); // Empty dependency array ensures this effect runs once on mount
+
+  return (
+    <div>
+      <h2>Window Width Tracker</h2>
+      <p>Current window width: {width}px</p>
+    </div>
+  );
+}
+
+export default Window_Width;
