@@ -10,9 +10,23 @@ import React, { useState } from 'react';
 
 function Timeout_Counter() {
   const [favoriteColor, setFavoriteColor] = useState('');
+  const [error, setError] = useState('');
+
+  const isValidColor = (value) => {
+    // Basic validation: must be non-empty and letters only
+    return /^[a-zA-Z\s]+$/.test(value);
+  };
 
   const handleChange = (e) => {
-    setFavoriteColor(e.target.value);
+    const value = e.target.value;
+
+    if (!isValidColor(value) && value !== '') {
+      setError('Please enter a valid color name (letters only).');
+    } else {
+      setError('');
+    }
+
+    setFavoriteColor(value);
   };
 
   return (
@@ -24,9 +38,13 @@ function Timeout_Counter() {
         onChange={handleChange}
         placeholder="Enter your favorite color"
       />
-      <p>Your favorite color is: {favoriteColor}</p>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {!error && favoriteColor && (
+        <p>Your favorite color is: {favoriteColor}</p>
+      )}
     </div>
   );
 }
 
 export default Timeout_Counter;
+
