@@ -14,6 +14,7 @@ function Text_Input() {
     setText(event.target.value);
   };
 
+  
   return (
     <div>
       <input
