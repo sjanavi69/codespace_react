@@ -16,7 +16,10 @@ const counterSlice = createSlice({
       state.value -= 1;
     },
     incrementByAmount: (state, action) => {
-      state.value += action.payload;
+      const value = Number(action.payload);
+  if (!isNaN(value)) {
+    state.value += value;
+  }
     },
   },
 });
