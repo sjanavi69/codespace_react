@@ -1,13 +1,15 @@
-import React from 'react'
+import { NavLink } from "react-router-dom";
 
-const NavBar = () => {
+
+function NavBar() {
   return (
-    <nav style={{ padding: '1rem', background: '#f0f0f0' }}>
-      <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
-      <Link to="/about" style={{ marginRight: '1rem' }}>About</Link>
-      <Link to="/contact">Contact</Link>
+    <nav>
+      <NavLink to="/" className={({ isActive }) => isActive ? "active-link" : ""}>Home</NavLink> | 
+      <NavLink to="/about" className={({ isActive }) => isActive ? "active-link" : ""}>About</NavLink> | 
+      <NavLink to="/contact" className={({ isActive }) => isActive ? "active-link" : ""}>Contact</NavLink>
     </nav>
   );
-};
-export default NavBar
+}
+
+export default NavBar;
 
