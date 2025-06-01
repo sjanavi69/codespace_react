@@ -1,12 +1,16 @@
 // src/App.jsx
-import Counter from './Module 4/Redux Toolkit - State Management in React/Counter_Redux/Counter';
+import Todos from './Module 4/Redux Toolkit - State Management in React/Todos_Redux/Todos';
 
-function App() {
+// src/App.jsx
+import React from 'react';
+
+
+const App = () => {
   return (
-    <div>
-      <Counter />
+    <div >
+      <Todos />
     </div>
   );
-}
+};
 
 export default App;
