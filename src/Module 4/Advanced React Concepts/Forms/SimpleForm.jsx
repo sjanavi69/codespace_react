@@ -1,58 +1,41 @@
 // SimpleForm.jsx
 import React, { useState } from 'react';
 
+// ✅ Simple controlled form component
 const SimpleForm = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-  });
-
-  const [errors, setErrors] = useState({
-    username: '',
-    email: '',
-  });
+  const [formData, setFormData] = useState({ username: '', email: '' });
+  const [errors, setErrors] = useState({ username: '', email: '' });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-
-    // Reset error while typing
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: '',
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: '' }));
   };
 
   const handleBlur = (e) => {
     const { name, value } = e.target;
     let error = '';
 
-    if (name === 'username' && value.trim() === '') {
+    if (name === 'username' && !value.trim()) {
       error = 'Username is required';
     }
 
-    if (name === 'email' && !value.includes('@')) {
-      error = 'Email must include "@" symbol';
+    if (name === 'email') {
+      if (!value.trim()) error = 'Email is required';
+      else if (!/^\S+@\S+\.\S+$/.test(value)) error = 'Invalid email format';
     }
 
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: error,
-    }));
+    setErrors((prev) => ({ ...prev, [name]: error }));
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: 'auto' }}>
+    <div>
       <h2>Simple Controlled Form</h2>
 
       <div>
-        <label>Username:</label>
+        <label htmlFor="username">Username:</label><br />
         <input
-          type="text"
+          id="username"
           name="username"
           value={formData.username}
           onChange={handleChange}
@@ -62,9 +45,9 @@ const SimpleForm = () => {
       </div>
 
       <div>
-        <label>Email:</label>
+        <label htmlFor="email">Email:</label><br />
         <input
-          type="text"
+          id="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
@@ -74,10 +57,8 @@ const SimpleForm = () => {
       </div>
 
       <hr />
-      <div>
-        <p><strong>Entered Username:</strong> {formData.username}</p>
-        <p><strong>Entered Email:</strong> {formData.email}</p>
-      </div>
+      <p><strong>Entered Username:</strong> {formData.username}</p>
+      <p><strong>Entered Email:</strong> {formData.email}</p>
     </div>
   );
 };
